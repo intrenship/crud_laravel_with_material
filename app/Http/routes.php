@@ -11,19 +11,17 @@
 |
 */
 
-Route::get('/', 'CrudController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::get('/utama', 'CrudController@utama');
 Route::get('/add', 'CrudController@create');
 Route::post('/store', 'CrudController@store');
 Route::get('/read/{id}', 'CrudController@show');
 Route::get('/edit/{id}', 'CrudController@edit');
 Route::post('/update/{id}', 'CrudController@update');
 Route::get('/delete/{id}', 'CrudController@destroy');
-
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');

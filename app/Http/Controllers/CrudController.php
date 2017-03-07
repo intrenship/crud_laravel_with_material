@@ -17,6 +17,12 @@ class CrudController extends Controller
     public function index()
     {
         //
+		
+        return view('auth/login');
+    }
+	    public function utama()
+    {
+        //
 		$datas = Crud::orderBy('id','DESC')->paginate(2);
 		return view('show')->with('datas',$datas);
     }
@@ -52,6 +58,27 @@ class CrudController extends Controller
      $tambah->save();
 
      return redirect()->to('/');
+    }
+	  
+  public function register1(Request $request)
+    {
+        //
+
+	$this->validate($request, [
+      'name' => 'required',
+      'username' => 'required',
+	  'email' => 'required',
+      'password' => 'required'	  
+]);
+	$tambah = new Reg();
+     $tambah->name = $request['name'];
+     $tambah->username = $request['username'];
+	 $tambah->email = $request['email'];
+     $tambah->password = $request['password'];
+     $tambah->save();
+		dd('succes');
+
+     return redirect()->to('../utama');
     }
 
     /**

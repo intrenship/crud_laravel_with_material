@@ -11,3 +11,4 @@ class Crud extends Model
 	protected $fillable = ['judl','is'];
 	public $timestamps = false;
 }
+
